@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Todos from "./data/todos.js";
+import "./App.css";
+
+
+
 
 const App = () => {
 
 	return (
 		<div>
-			<h1>Todoooooooo app</h1>
 
-			<h3>Was ich machen werde wenn die kontaktsperre aufgehoben wird:</h3>
+			<h1>Todo app</h1>
+
+			<h3>react</h3>
 			<ul>
 
-				<li>
-					Item
-				</li>
+				{Todos.map((item, index) => {
+					return (
+					<li key={index}>
+						<div>
+							{item.title}
+							<input type="checkbox" checked={item.isCompleted}/>
+							<button onClick={() => removeTodo(index)}>x</button>
+						</div>
+					</li>
+					)
+				})}
 
 			</ul>
+			
 		</div>
 	);
 };
